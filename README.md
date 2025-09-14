@@ -14,8 +14,8 @@ This repository contains a Python client-server system to measure OWD between tw
 Edit local variables in `server.py`:
 ```python
 PORT = 5005
-BIND_IP = '0.0.0.0'  # Listen on all interfaces
-LABEL = 'wired_baseline'  # Change for each test
+BIND_IP = '0.0.0.0'  #Listen on all interfaces
+LABEL = 'wired_baseline'  #Change for each test
 LOG_DIR = '.'
 NO_CONSOLE = False
 ```
@@ -29,15 +29,15 @@ python3 server.py
 
 Edit local variables in `client.py`:
 ```python
-SERVER_IP = '192.168.100.20'  # Your server's IP
+SERVER_IP = '192.168.100.20'  #Your server IP
 PORT = 5005
-BIND_IP = None  # Set to specific interface IP for wired/WiFi selection
-INTERVAL_MS = 100  # Packet interval in milliseconds
-COUNT = 300  # Number of packets to send
-PACKET_SIZE = 64  # Total packet size in bytes
-LABEL = 'wired_baseline'  # Match server label
+BIND_IP = None  #Set to specific interface IP for wired-wifi selection
+INTERVAL_MS = 100  #Packet interval in milliseconds
+COUNT = 300  #Number of packets to send
+PACKET_SIZE = 64  #Total packet size in bytes
+LABEL = 'wired_baseline'  #Match server label
 SYNC_ROUNDS = 10
-SYNC_INTERVAL = 15.0  # Re-sync every N seconds
+SYNC_INTERVAL = 15.0  #Re-sync every N seconds
 LOG_DIR = '.'
 ```
 
@@ -52,13 +52,13 @@ python3 client.py
 
 To test wired interface:
 ```python
-BIND_IP = '192.168.100.15'  # Your wired interface IP
+BIND_IP = '192.168.100.15'  #Your wired interface IP
 LABEL = 'wired_baseline'
 ```
 
 To test WiFi interface:
 ```python
-BIND_IP = '192.168.100.16'  # Your WiFi interface IP  
+BIND_IP = '192.168.100.16'  #Your wifi interface IP  
 LABEL = 'wifi_baseline'
 ```
 
@@ -75,26 +75,26 @@ ipconfig
 
 Baseline comparison:
 ```python
-# Wired baseline:
+#Wired baseline:
 BIND_IP = 'your_wired_ip'
-PACKET_SIZE = 64
+PACKET_SIZE = 256
 INTERVAL_MS = 100
 LABEL = 'wired_baseline'
 
-# WiFi baseline:
+#WiFi baseline:
 BIND_IP = 'your_wifi_ip'
-PACKET_SIZE = 64
+PACKET_SIZE = 256
 INTERVAL_MS = 100
 LABEL = 'wifi_baseline'
 ```
 
 Packet size effects:
 ```python
-# Small packets:
+#Small packets:
 PACKET_SIZE = 64
 LABEL = 'wired_packet_low'
 
-# Large packets:
+#Large packets:
 PACKET_SIZE = 1472
 LABEL = 'wired_packet_high'
 ```
@@ -105,7 +105,7 @@ Frequency effects:
 INTERVAL_MS = 500
 LABEL = 'wired_freq_low'
 
-# High frequency:
+#High frequency:
 INTERVAL_MS = 20
 LABEL = 'wired_freq_high'
 ```
@@ -122,9 +122,9 @@ The system uses round-trip-based synchronization:
 
 Configure synchronization in `client.py`:
 ```python
-# In roundtrip_sync() function:
-USE_ROUNDTRIP_SYNC = True   # Enable round-trip sync
-USE_ROUNDTRIP_SYNC = False  # Assume perfect sync (offset = 0)
+#roundtrip_sync() function:
+USE_ROUNDTRIP_SYNC = True   #Enable round-trip sync
+USE_ROUNDTRIP_SYNC = False  # assume perfect sync 
 ```
 
 ## Data Format
@@ -168,11 +168,11 @@ OWD = server_recv_time - (client_send_time + client_offset_est)
 
 Address already in use error:
 ```bash
-# Find and kill process using port 5005:
+#Find and kill process using port 5005:
 lsof -i :5005
 kill <PID>
 
-# Or use different port in both files:
+#or use different port in both files:
 PORT = 5006
 ```
 
@@ -186,10 +186,4 @@ Large packet loss:
 - Check network capacity
 - Verify interface selection (ensure BIND_IP is correct)
 
-## Expected Results
 
-Typical OWD values:
-- Wired (Ethernet): 1-10 ms baseline, low jitter
-- WiFi: 5-50 ms baseline, higher jitter and variance
-- Packet size effect: +0.1ms per 100 bytes (serialization delay)
-- Frequency effect: Higher rates lead to more congestion and higher OWD
