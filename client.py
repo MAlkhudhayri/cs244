@@ -28,7 +28,6 @@ def roundtrip_sync(sock, server_addr, rounds=5, timeout=1.0):
     
     for i in range(rounds):
         t0 = time.time()
-        # Send simple sync ping
         ping_msg = f"SYNC_PING_{i}".encode()
         sock.sendto(ping_msg, server_addr)
         
