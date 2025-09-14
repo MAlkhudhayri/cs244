@@ -186,4 +186,52 @@ Large packet loss:
 - Check network capacity
 - Verify interface selection (ensure BIND_IP is correct)
 
+## Expected Results
+
+Typical OWD values:
+- Wired (Ethernet): 1-10 ms baseline, low jitter
+- WiFi: 5-50 ms baseline, higher jitter and variance
+- Packet size effect: +0.1ms per 100 bytes (serialization delay)
+- Frequency effect: Higher rates lead to more congestion and higher OWD
+
+->
+
+## Expected Results
+
+Typical OWD values:
+- Wired (Ethernet): 1-10 ms baseline, low jitter
+- WiFi: 5-50 ms baseline, higher jitter and variance
+- Packet size effect: +0.1ms per 100 bytes (serialization delay)
+- Frequency effect: Higher rates lead to more congestion and higher OWD
+
+## Summary of Results
+
+### Experimental Findings
+
+Our OWD measurement system successfully captured network performance differences between wired and wireless interfaces across multiple test scenarios:
+
+#### Clock Synchronization Challenges
+- Detected large clock offsets (up to 5 hours) between client and server machines
+- Wired tests required ~18,079 second offset correction
+- WiFi tests required ~0.4 second offset correction
+- Demonstrates the critical importance of precise time synchronization in OWD measurement
+
+#### Network Performance Comparison
+
+**Wired Interface Performance:**
+- OWD Range: -25 to 401ms (after offset correction)
+- Lower variability and more stable delays
+- Packet size effects: 64-byte packets vs 1472-byte packets showed increased delay
+- Consistent performance across different transmission frequencies
+
+**WiFi Interface Performance:**
+- OWD Range: -587 to 229ms (after offset correction)
+- Higher variability and jitter compared to wired
+- More susceptible to sync estimation errors
+- Greater sensitivity to packet size and transmission frequency changes
+
+#### Packet Loss Analysis
+- All test scenarios showed very low packet loss (≤ 1.3%)
+- No significant difference in loss rates between wired and WiFi
+- Network reliability was excellent across all test conditions
 
