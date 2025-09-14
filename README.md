@@ -186,24 +186,6 @@ Large packet loss:
 - Check network capacity
 - Verify interface selection (ensure BIND_IP is correct)
 
-## Expected Results
-
-Typical OWD values:
-- Wired (Ethernet): 1-10 ms baseline, low jitter
-- WiFi: 5-50 ms baseline, higher jitter and variance
-- Packet size effect: +0.1ms per 100 bytes (serialization delay)
-- Frequency effect: Higher rates lead to more congestion and higher OWD
-
-->
-
-## Expected Results
-
-Typical OWD values:
-- Wired (Ethernet): 1-10 ms baseline, low jitter
-- WiFi: 5-50 ms baseline, higher jitter and variance
-- Packet size effect: +0.1ms per 100 bytes (serialization delay)
-- Frequency effect: Higher rates lead to more congestion and higher OWD
-
 ## Summary of Results
 
 ### Experimental Findings
